@@ -13,10 +13,21 @@ public class MagicNumbers : MonoBehaviour
     void Start()
     {
         Debug.Log("Welcome to our game, " + playerName);
+        StartGame();
+    }
+
+    void StartGame()
+    {
+        minNumber = 1;
+        maxNumber = 1000;
         Debug.Log("Please, choose your number");
         Debug.Log("Min number: " + minNumber);
         Debug.Log("Max number: " + maxNumber);
+        UpdateGuess();
+    }
 
+    void UpdateGuess()
+    {
         guess = (maxNumber + minNumber) / 2;
         Debug.Log("Is Your number : " + guess + " ? ");
     }
@@ -26,21 +37,29 @@ public class MagicNumbers : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.UpArrow))
         {
-            minNumber = guess;
-            guess = (maxNumber + minNumber) / 2;
-            Debug.Log("Is your number: " + guess + " ? ");
+            if (guess == 999)
+            {
+               guess = 1000;
+               Debug.Log("I have found! Your number is: " + guess);
+               StartGame();
+            }
+            else
+            {
+                minNumber = guess;
+                UpdateGuess();
+            } 
         }
         
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             maxNumber = guess;
-            guess = (maxNumber + minNumber) / 2;
-            Debug.Log("Is your number: " + guess + " ? ");
+            UpdateGuess();
         }
 
         else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             Debug.Log("I have found! Your number is: " + guess);
+            StartGame();
         }
     }
 }
