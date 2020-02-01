@@ -8,6 +8,7 @@ public class MagicNumbers : MonoBehaviour
     int maxNumber = 1000;
     string playerName = "Alex";
     int guess;
+    int stepNumber = 0;
 
     //Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class MagicNumbers : MonoBehaviour
     {
         minNumber = 1;
         maxNumber = 1000;
+        stepNumber = 0;
         Debug.Log("Please, choose your number");
         Debug.Log("Min number: " + minNumber);
         Debug.Log("Max number: " + maxNumber);
@@ -30,6 +32,15 @@ public class MagicNumbers : MonoBehaviour
     {
         guess = (maxNumber + minNumber) / 2;
         Debug.Log("Is Your number : " + guess + " ? ");
+        stepNumber = stepNumber + 1;
+    }
+
+    void EndGame()
+    {
+        Debug.Log("I have found! Your number is: " + guess);
+        Debug.Log("Step number is: " + stepNumber);
+        StartGame();
+
     }
 
     // Update is called once per frame
@@ -40,8 +51,8 @@ public class MagicNumbers : MonoBehaviour
             if (guess == 999)
             {
                guess = 1000;
-               Debug.Log("I have found! Your number is: " + guess);
-               StartGame();
+               EndGame();
+
             }
             else
             {
@@ -58,8 +69,7 @@ public class MagicNumbers : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            Debug.Log("I have found! Your number is: " + guess);
-            StartGame();
+            EndGame();
         }
     }
 }
