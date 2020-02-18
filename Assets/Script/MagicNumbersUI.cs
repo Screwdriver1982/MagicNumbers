@@ -10,7 +10,7 @@ public class MagicNumbersUI : MonoBehaviour
     public int minNumber = 1;
     public int maxNumber = 1000;
     public int guess;
-    int stepNumber = 0;
+    public int stepNumber = 0;
     public Text guessTxt;
     public TextMeshProUGUI stepNumberTxt;
 
@@ -27,7 +27,15 @@ public class MagicNumbersUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // не удаляет объект, к которому привязан
+        Debug.Log("Start Script " + gameObject);
+        DontDestroyOnLoad(gameObject);
         UpdateGuess();
+    }
+
+    void OnDestroy()
+    {
+        Debug.Log("Destroy script");
     }
 
     // Update is called once per frame
@@ -35,7 +43,7 @@ public class MagicNumbersUI : MonoBehaviour
     {
         if (upOrDown == 1)
         {
-            if (guess == maxNumber-1)
+            if (guess == maxNumber)
             {
                 guess = maxNumber;
 
