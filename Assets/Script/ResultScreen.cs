@@ -25,7 +25,7 @@ public class ResultScreen : MonoBehaviour
         }
         Debug.Log("After for");
         */
-        Text[] allTexts = FindObjectsOfType<Text>(); //ищет все компоненты типа Текст
+        Text[] allTexts = FindObjectsOfType<Text>(); //ищет все компоненты типа Text 
         for (int i = 0; i < allTexts.Length; i++)
         {
             allTexts[i].text = "Text" + i;
@@ -33,12 +33,14 @@ public class ResultScreen : MonoBehaviour
 
 
 
-        MagicNumbersUI magicNumbers = FindObjectOfType<MagicNumbersUI>(); //ищет первую попавшуюся компоненту с таким типом, сама компонента привязана к какому-то объекту
+        MagicNumbersUI magicNumbers = FindObjectOfType<MagicNumbersUI>(); 
+        //ищет первую попавшуюся компоненту с типом  MagicNumbersUI, сама компонента привязана к какому-то объекту, компоненту кладут в magicNumbers
+
         int number = magicNumbers.guess;
         int step = magicNumbers.stepNumber;
         resultText.text = "Ваше число " + number;
 
-        Destroy(magicNumbers.gameObject); //уничтожает объект, к которому привязана найденная компонента
+        Destroy(magicNumbers.gameObject); //уничтожает объект, к которому привязана найденная компонента, сама компонента хранится в переменной magicNumbers типа MagicNumbersUI,
     }
 
     // Update is called once per frame

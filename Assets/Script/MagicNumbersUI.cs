@@ -29,7 +29,7 @@ public class MagicNumbersUI : MonoBehaviour
     {
         // не удаляет объект, к которому привязан
         Debug.Log("Start Script " + gameObject);
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject); // запрещает уничтожать объект при переходе со сцены на сцену
         UpdateGuess();
     }
 
